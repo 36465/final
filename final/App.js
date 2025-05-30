@@ -1,76 +1,139 @@
 import React, {useState, useEffect} from 'react';
-import {useVideoPlayer, VideoView} from 'expo-video';
 import {View, StyleSheet, Text, Dimensions, Pressable} from 'react-native';
-import {useEvent} from 'expo';
 
 const windowDimensions = Dimensions.get('window');
 const screenDimensions = Dimensions.get('screen');
 
-
 const App = () => {
-
-    const [number, setNumber] = useState(1);
-    const [HEIGHT, setHEIGHT] = useState();
-    const [WIDTH, setWIDTH] = useState();
-
-    
-   
-
-  const changenumber = () => {
-    if (number < 10) {
-      setNumber(number + 1);
-    } else {
-      setNumber(1);
-    }
-  };
+  const [number, setNumber] = useState(1);
   const [dimensions, setDimensions] = useState({
     window: windowDimensions,
     screen: screenDimensions,
   });
 
-  useEffect(() => {
-    setHEIGHT(dimensions.screen.height);
-    setWIDTH(dimensions.screen.width)
-  }, [dimensions]);
+ const changenumber = () => {
+    if (number > 1) {
+      setNumber(number - 1);
+    } else {
+      setNumber(10);
+    }
+  };
 
-  useEffect(() => {
-  console.log("This is my height ", HEIGHT, " And this is my width, ", WIDTH)
-  }, [HEIGHT,WIDTH]);
 
+  // Screens
+  const renderContent = () => {
+    switch(number) {
+      case 1:
+        return (
+          <View>
+            <Text style={styles.subHeader}>best video</Text>
+            <Text>this video if funny, please enjoy the video that is 100% shown right now.</Text>
+          </View>
+        );
+
+      case 2:
+        return (
+          <View>
+            <Text style={styles.subHeader}>best video</Text>
+            <Text>this video if funny, please enjoy the video that is 100% shown right now.</Text>
+          </View>
+        );
+
+      case 3:
+        return (
+          <View>
+            <Text style={styles.subHeader}>best video</Text>
+            <Text>this video if funny, please enjoy the video that is 100% shown right now.</Text>
+          </View>
+        );
+
+      case 4:
+        return (
+          <View>
+            <Text style={styles.subHeader}>best video</Text>
+            <Text>this video if funny, please enjoy the video that is 100% shown right now.</Text>
+          </View>
+        );
+
+      case 5:
+        return (
+          <View>
+            <Text style={styles.subHeader}>best video</Text>
+            <Text>this video if funny, please enjoy the video that is 100% shown right now.</Text>
+          </View>
+        );
+
+      case 6:
+        return (
+          <View>
+            <Text style={styles.subHeader}>best video</Text>
+            <Text>this video if funny, please enjoy the video that is 100% shown right now.</Text>
+          </View>
+        );
+      
+      case 7:
+        return (
+          <View>
+            <Text style={styles.subHeader}>best video</Text>
+            <Text>this video if funny, please enjoy the video that is 100% shown right now.</Text>
+          </View>
+        );
+
+      case 8:
+        return (
+          <View>
+            <Text style={styles.subHeader}>best video</Text>
+            <Text>this video if funny, please enjoy the video that is 100% shown right now.</Text>
+          </View>
+        );
+
+      case 9:
+        return (
+          <View>
+            <Text style={styles.subHeader}>best video</Text>
+            <Text>this video if funny, please enjoy the video that is 100% shown right now.</Text>
+          </View>
+        );
+
+      case 10:
+        return (
+          <View>
+            <Text style={styles.subHeader}>best video</Text>
+            <Text>this video if funny, please enjoy the video that is 100% shown right now.</Text>
+          </View>
+        );
+
+      // blank
+      default:
+        return (
+          <View>
+            <Text style={styles.subHeader}>best video</Text>
+            <Text>this video if funny, please enjoy the video that is 100% shown right now.</Text>
+          </View>
+        );
+
+
+  // 
   useEffect(() => {
     const subscription = Dimensions.addEventListener(
       'change',
       ({window, screen}) => {
         setDimensions({window, screen});
-      },
+      }
     );
     return () => subscription?.remove();
-  });
-
-console.log("height =",dimensions.screen.height, "width =", dimensions.screen.width);
-
+  }, []);
 
   return (
-   <>
     <View style={styles.container}>
-      <Pressable onPress={() => changenumber()}>
-   <Text style={styles.header}>{number}</Text>
-
-      <Text style={styles.header}>Window Dimensions </Text>
-      {Object.entries(dimensions.window).map(([key, value]) => (
-        <Text key={key}>
-          {key} - {value}
-        </Text>
-      ))}
-      <Text style={styles.header}>Screen Dimensions</Text>
-      {Object.entries(dimensions.screen).map(([key, value]) => (
-        <Text key={key}>
-          {key} - {value}
-        </Text>
-      ))}
-        </Pressable>
+      <Pressable 
+        onPress={changenumber} 
+        style={styles.pressableArea}
+      >
+        <Text style={styles.header}>Top 10 videos: {number}</Text>
+        {renderContent()}
+      </Pressable>
     </View>
-    </>
   );
 };
 
@@ -79,10 +142,25 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    backgroundColor: '#f5f5f5',
+  },
+  pressableArea: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: '100%',
   },
   header: {
-    fontSize: 16,
+    fontSize: 24,
+    fontWeight: 'bold',
+    marginBottom: 20,
+    color: '#333',
+  },
+  subHeader: {
+    fontSize: 18,
+    fontWeight: '600',
     marginVertical: 10,
+    color: '#444',
   },
 });
 
