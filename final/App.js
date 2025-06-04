@@ -1,17 +1,18 @@
-import React, {useState, useEffect} from 'react';
-import {View, StyleSheet, Text, Dimensions, Pressable} from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { View, StyleSheet, Text, Dimensions, Pressable } from 'react-native';
+import { useVideoPlayer, VideoView } from 'expo-video';
 
 const windowDimensions = Dimensions.get('window');
 const screenDimensions = Dimensions.get('screen');
 
 const App = () => {
-  const [number, setNumber] = useState(1);
+  const [number, setNumber] = useState(10);
   const [dimensions, setDimensions] = useState({
     window: windowDimensions,
     screen: screenDimensions,
   });
 
- const changenumber = () => {
+  const changenumber = () => {
     if (number > 1) {
       setNumber(number - 1);
     } else {
@@ -19,117 +20,44 @@ const App = () => {
     }
   };
 
-
-  // Screens
   const renderContent = () => {
-    switch(number) {
+    switch (number) {
       case 1:
-        return (
-          <View>
-            <Text style={styles.subHeader}>best video</Text>
-            <Text>this video if funny, please enjoy the video that is 100% shown right now.</Text>
-          </View>
-        );
-
       case 2:
-        return (
-          <View>
-            <Text style={styles.subHeader}>best video</Text>
-            <Text>this video if funny, please enjoy the video that is 100% shown right now.</Text>
-          </View>
-        );
-
       case 3:
-        return (
-          <View>
-            <Text style={styles.subHeader}>best video</Text>
-            <Text>this video if funny, please enjoy the video that is 100% shown right now.</Text>
-          </View>
-        );
-
       case 4:
-        return (
-          <View>
-            <Text style={styles.subHeader}>best video</Text>
-            <Text>this video if funny, please enjoy the video that is 100% shown right now.</Text>
-          </View>
-        );
-
       case 5:
-        return (
-          <View>
-            <Text style={styles.subHeader}>best video</Text>
-            <Text>this video if funny, please enjoy the video that is 100% shown right now.</Text>
-          </View>
-        );
-
       case 6:
-        return (
-          <View>
-            <Text style={styles.subHeader}>best video</Text>
-            <Text>this video if funny, please enjoy the video that is 100% shown right now.</Text>
-          </View>
-        );
-      
       case 7:
-        return (
-          <View>
-            <Text style={styles.subHeader}>best video</Text>
-            <Text>this video if funny, please enjoy the video that is 100% shown right now.</Text>
-          </View>
-        );
-
       case 8:
-        return (
-          <View>
-            <Text style={styles.subHeader}>best video</Text>
-            <Text>this video if funny, please enjoy the video that is 100% shown right now.</Text>
-          </View>
-        );
-
       case 9:
-        return (
-          <View>
-            <Text style={styles.subHeader}>best video</Text>
-            <Text>this video if funny, please enjoy the video that is 100% shown right now.</Text>
-          </View>
-        );
-
       case 10:
         return (
           <View>
             <Text style={styles.subHeader}>best video</Text>
-            <Text>this video if funny, please enjoy the video that is 100% shown right now.</Text>
+            <Text>this video is funny, please enjoy the video that is 100% shown right now.</Text>
           </View>
         );
-
-      // blank
       default:
         return (
           <View>
             <Text style={styles.subHeader}>best video</Text>
-            <Text>this video if funny, please enjoy the video that is 100% shown right now.</Text>
+            <Text>this video is funny, please enjoy the video that is 100% shown right now.</Text>
           </View>
         );
+    }
+  };
 
-
-  // 
   useEffect(() => {
-    const subscription = Dimensions.addEventListener(
-      'change',
-      ({window, screen}) => {
-        setDimensions({window, screen});
-      }
-    );
+    const subscription = Dimensions.addEventListener('change', ({ window, screen }) => {
+      setDimensions({ window, screen });
+    });
     return () => subscription?.remove();
   }, []);
 
   return (
     <View style={styles.container}>
-      <Pressable 
-        onPress={changenumber} 
-        style={styles.pressableArea}
-      >
+      <Pressable onPress={changenumber} style={styles.pressableArea}>
         <Text style={styles.header}>Top 10 videos: {number}</Text>
         {renderContent()}
       </Pressable>
