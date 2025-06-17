@@ -13,7 +13,6 @@ const App = () => {
     const [WIDTH, setWIDTH] = useState();
  
 const video1 = 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4';
-// replace video2-3 urls later.
 const video2 = 'https://videos.pexels.com/video-files/32228777/13745033_1440_2560_30fps.mp4';
 const video3 = 'https://videos.pexels.com/video-files/32591082/13898190_1440_2560_30fps.mp4';
 const video4 = 'https://videos.pexels.com/video-files/27349959/12121107_2560_1440_30fps.mp4';
